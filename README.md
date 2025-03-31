@@ -63,3 +63,19 @@ The main ingestion pipeline can be run through:
 ```sh
 python source/data_ingestion/ingest_data.py
 ```
+
+
+The django server app: Linked Data
+
+Load full_linked.ttl first
+
+```
+python manage.py runserver
+
+
+Django version 5.1.7, using settings 'linkeddata.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+
+
