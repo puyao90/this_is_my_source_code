@@ -67,7 +67,8 @@ python source/data_ingestion/ingest_data.py
 
 The django server app: Linked Data
 
-Load full_linked.ttl first
+Load full_linked.ttl to GraphDB first
+Update GraphDB connection in linkeddata/model.py file based on your own environment
 
 ```
 python manage.py runserver
