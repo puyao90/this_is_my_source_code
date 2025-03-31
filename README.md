@@ -12,32 +12,32 @@ A Python-based data processing pipeline for converting and enriching musical pro
 
 ```
 source/
-├── __init__.py
-├── data_ingestion/          # Core data ingestion and processing
-│   ├── __init__.py
-│   ├── constants.py         # Shared constants and configurations
-│   ├── ingest_data.py      # Main ingestion pipeline
-│   ├── process_*.py        # Individual entity processors
-│   ├── utils.py            # Shared utilities
-│   ├── data_cleaning/      # Data cleaning components
-│   │   ├── __init__.py
-│   │   ├── abstract.py     # Abstract base classes
-│   │   ├── data_cleaner.py # Data cleaning implementation
-│   │   └── utils.py        # Cleaning utilities
-│   └── data_enrichement/   # Data enrichment components
-│       ├── __init__.py
-│       ├── extra_api/      # External API integrations
-│       └── web_crawler/    # Web scraping utilities
-├── data_server/            # Data serving application
-│   ├── db.sqlite3          # SQLite database
-│   ├── manage.py          # Django management script
-│   └── linkeddata/        # Django app for linked data
-├── data_source/           # Source data analysis
-│   └── source_analysis/   # Data analysis tools
-└── rdf_output/           # Output directory for RDF data
-    ├── full_linked.ttl.zip
-    ├── queries.txt
-    └── sample_linked.ttl
+├── __init__.py  
+├── data_ingestion/          # Core data ingestion and processing  
+│   ├── __init__.py  
+│   ├── constants.py         # Shared constants and configurations  
+│   ├── ingest_data.py       # Main ingestion pipeline  
+│   ├── process_*.py         # Individual entity processors  
+│   ├── utils.py             # Shared utilities  
+│   ├── data_cleaning/       # Data cleaning components  
+│   │   ├── __init__.py  
+│   │   ├── abstract.py      # Abstract base classes  
+│   │   ├── data_cleaner.py  # Data cleaning implementation  
+│   │   └── utils.py         # Cleaning utilities  
+│   └── data_enrichement/    # Data enrichment components  
+│       ├── __init__.py  
+│       ├── extra_api/       # External API integrations  
+│       └── web_crawler/     # Web scraping utilities  
+├── data_server/             # Data serving application  
+│   ├── db.sqlite3           # SQLite database  
+│   ├── manage.py            # Django management script  
+│   └── linkeddata/          # Django app for linked data  
+├── data_source/             # Source data analysis  
+│   └── source_analysis/     # Data analysis tools  
+└── rdf_output/              # Output directory for RDF data  
+    ├── full_linked.ttl.zip  # <=========== Unzip to access 2M rows of linked data ===========>  
+    ├── queries.txt          # Query notes  
+    └── sample_linked.ttl    # Sample linked program to show structure and format  
 ```
 
 ## Key Components
