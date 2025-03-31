@@ -1,0 +1,43 @@
+<!-- webapp/templates/webapp/work.html -->
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Work Details{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if work %}
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">{{ work.workTitle }}</h2>
+                <p><strong>Composer:</strong> {{ work.composer.label }}</p>
+                {% if work.movement %}
+                    <p><strong>Movement:</strong> {{ work.movement }}</p>
+                {% endif %}
+                {% if work.interval %}
+                    <p><strong>Interval:</strong> {{ work.interval }}</p>
+                {% endif %}
+                {% if work.conductorName %}
+                    <p><strong>Conductor:</strong> {{ work.conductorName }}</p>
+                {% endif %}
+                
+                {% if work.soloists %}
+                    <h3>Soloists</h3>
+                    <ul class="list-group">
+                        {% for soloist in work.soloists %}
+                            <li class="list-group-item">
+                                {{ soloist.soloistName }} - {{ soloist.soloistInstrument }}
+                                ({{ soloist.soloistRoles }})
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            Work not found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

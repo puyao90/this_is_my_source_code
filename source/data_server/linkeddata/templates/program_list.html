@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Programs{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Programs</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="form-inline">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <label for="venue" class="me-4">Venue:</label>
+                        <input type="text" class="form-control" id="venue" name="venue" 
+                               value="{{ selected_venue }}" placeholder="Enter the name, eg: Carnegie Hall">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if programs %}
+        <div class="list-group">
+            {% for program in programs %}
+                <a href="{% url 'program' program.id %}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Program {{ program.id }}</h5>
+                        <small>Season: {{ program.season }}</small>
+                    </div>
+                    <p class="mb-1">Orchestra: {{ program.orchestra }}</p>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            No programs found for this venue.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

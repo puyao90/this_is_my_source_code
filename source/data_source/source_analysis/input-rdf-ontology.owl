@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:ex="http://localhost:8001/terms#">
+
+  <!-- Classes -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#Program">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Program</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#Conductor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Conductor</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#Concert">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Concert</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://localhost:8001/terms#Work">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Work</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://localhost:8001/terms#Soloist">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Soloist</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://localhost:8001/terms#Composer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Composer</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://localhost:8001/terms#Orchestra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Orchestra</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#conductorName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>conductorName</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Conductor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <!-- Object Property: hasComposer -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#hasComposer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasComposer</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Work"/>
+    <rdfs:range rdf:resource="http://localhost:8001/terms#Composer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#hasConductor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasConductor</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Work"/>
+    <rdfs:range rdf:resource="http://localhost:8001/terms#Conductor"/>
+  </rdf:Description>
+  <!-- Object Property: hasSoloist -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#hasSoloist">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasSoloist</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Work"/>
+    <rdfs:range rdf:resource="http://localhost:8001/terms#Soloist"/>
+  </rdf:Description>
+
+  <!-- Object Property: hasConcert -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#hasConcert">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasConcert</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Program"/>
+    <rdfs:range rdf:resource="http://localhost:8001/terms#Concert"/>
+  </rdf:Description>
+
+  <!-- Object Property: hasWork -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#hasWork">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasWork</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Program"/>
+    <rdfs:range rdf:resource="http://localhost:8001/terms#Work"/>
+  </rdf:Description>
+
+  <!-- Object Property: hasOrchestra -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#hasOrchestra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasOrchestra</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Program"/>
+    <rdfs:range rdf:resource="http://localhost:8001/terms#Orchestra"/>
+  </rdf:Description>
+
+  <!-- Object Property: performedBy -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#performedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>performedBy</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Soloist"/>
+    <rdfs:range rdf:resource="http://localhost:8001/terms#Concert"/>
+  </rdf:Description>
+
+  <!-- Datatype Property: eventType -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#eventType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>eventType</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Concert"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <!-- Datatype Property: composerName -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#composerName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>composerName</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Composer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <!-- Datatype Property: soloistInstrument -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#soloistInstrument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>soloistInstrument</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Soloist"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <!-- Datatype Property: soloistRoles -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#soloistRoles">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>soloistRoles</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Soloist"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <!-- Datatype Property: venue -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#venue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>venue</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Concert"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <!-- Datatype Property: time -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#time">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>time</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Concert"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <!-- Datatype Property: location -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>location</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Concert"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#id">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>id</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Program"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#season">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>season</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Program"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#programID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>programID</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Program"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+  <!-- Work -> Movement -->
+  <rdf:Description rdf:about="http://localhost:8001/terms#movement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>movement</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Work"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#workTitle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>workTitle</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Work"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8001/terms#interval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>interval</rdfs:label>
+    <rdfs:domain rdf:resource="http://localhost:8001/terms#Work"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+
+
+  <!-- Work Instances -->
+  <!-- Work: OBERON -->
+  <rdf:Description rdf:about="http://localhost:8001/data#8834*4">
+    <rdf:type rdf:resource="http://localhost:8001/terms#Work"/>
+    <ex:composerName>Weber, Carl Maria Von</ex:composerName>
+    <ex:workTitle>OBERON</ex:workTitle>
+    <ex:movement>"Ozean, du Ungeheuer" (Ocean, thou mighty monster), Reiza (Scene and Aria), Act II</ex:movement>
+    <ex:conductorName>Timm, Henry C.</ex:conductorName>
+  </rdf:Description>
+
+  <!-- Soloist for OBERON -->
+  <rdf:Description rdf:about="http://localhost:8001/data#soloist_Otto_Antoinette">
+    <rdf:type rdf:resource="http://localhost:8001/terms#Soloist"/>
+    <ex:soloistName>Otto, Antoinette</ex:soloistName>
+    <ex:soloistInstrument>Soprano</ex:soloistInstrument>
+    <ex:soloistRoles>S</ex:soloistRoles>
+  </rdf:Description>
+
+</rdf:RDF>

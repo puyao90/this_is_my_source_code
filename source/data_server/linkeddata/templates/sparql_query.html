@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}SPARQL Query{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>SPARQL Query Interface</h2>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="query">SPARQL Query:</label>
+            <textarea class="form-control" id="query" name="query" rows="6">{{ query }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Execute Query</button>
+    </form>
+
+    {% if results %}
+        {% if results.error %}
+            <div class="alert alert-danger">
+                {{ results.error }}
+            </div>
+        {% else %}
+            <h3>Results:</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            {% for var in results.0.keys %}
+                                <th>{{ var }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in results %}
+                            <tr>
+                                {% for value in row.values %}
+                                    <td>{{ value.value }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

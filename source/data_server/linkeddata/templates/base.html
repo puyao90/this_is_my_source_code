@@ -1,0 +1,92 @@
+<!-- webapp/templates/webapp/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% load static %}
+    {% load django_bootstrap5 %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+        .external-link {
+            text-decoration: none;
+            color: #0d6efd;
+        }
+        .external-link:hover {
+            text-decoration: underline;
+        }
+        .bi-info-circle-fill {
+            color: #6c757d;
+            font-size: 0.8em;
+        }
+        
+        a:hover .bi-info-circle-fill {
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'program_list' %}">Yao's Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'program_list' %}">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sparql_query' %}">SPARQL Query</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    {% bootstrap_javascript %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('linkModal');
+            if (modal) {
+                let currentUrl = '';
+                let currentTitle = '';
+
+                modal.addEventListener('show.bs.modal', function(event) {
+                    const button = event.relatedTarget;
+                    currentUrl = button.getAttribute('data-url');
+                    currentTitle = button.getAttribute('title');
+                    modal.querySelector('.modal-title').textContent = currentTitle;
+                });
+
+                modal.querySelector('#openPopupBtn').addEventListener('click', function() {
+                    // Open popup window
+                    const popup = window.open(currentUrl, 'ExternalContent', 
+                        'width=1024,height=768,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes');
+                    
+                    // Close the modal
+                    const modalInstance = bootstrap.Modal.getInstance(modal);
+                    modalInstance.hide();
+                });
+            }
+
+            document.querySelectorAll('.external-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = link.getAttribute('data-url');
+                    window.open(url, 'ExternalContent', 
+                        'width=1024,height=768,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

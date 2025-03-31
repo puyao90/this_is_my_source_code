@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="programs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="program" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:string"/>
+                            <xs:element name="programID" type="xs:string"/>
+                            <xs:element name="orchestra" type="xs:string"/>
+                            <xs:element name="season" type="xs:string"/>
+                            <xs:element name="concerts" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="concert" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="eventType" type="xs:string"/>
+                                                    <xs:element name="Location" type="xs:string"/>
+                                                    <xs:element name="Venue" type="xs:string"/>
+                                                    <xs:element name="Date" type="xs:dateTime"/>
+                                                    <xs:element name="Time" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="works" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="work" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="composerName" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="workTitle" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="movement" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="conductorName" type="xs:string" minOccurs="0"/>
+                                                    <xs:element name="soloists" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="soloist" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="soloistName" type="xs:string"/>
+                                                                            <xs:element name="soloistInstrument" type="xs:string"/>
+                                                                            <xs:element name="soloistRoles" type="xs:string"/>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="interval" type="xs:string" minOccurs="0"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="ID" type="xs:string" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+

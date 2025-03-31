@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if artist %}
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">{{ artist_type }}: {{ artist.label }}</h5>
+            </div>
+            <div class="card-body">
+                {% for key, value in additional_info.items %}
+                    {% if value %}
+                        <p class="card-text">
+                            <strong>{{ key }}:</strong> 
+                            {% if key == "MusicBrainz" %}
+                                <a href="{{ value }}" target="_blank">{{ value }}</a>
+                            {% else %}
+                                {{ value }}
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            {{ artist_type }} not found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

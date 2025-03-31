@@ -1,0 +1,134 @@
+{
+  "programs": [
+    {
+      "id": "00646b9f-fec7-4ffb-9fb1-faae410bd9dc-0.1",
+      "programID": "3853",
+      "orchestra": "New York Philharmonic",
+      "season": "1842-43",
+      "concerts": [
+        {
+          "eventType": "Subscription Season",
+          "Location": "Manhattan, NY",
+          "Venue": "Apollo Rooms",
+          "Date": "1842-12-07T05:00:00Z",
+          "Time": "8:00PM"
+        }
+      ],
+      "works": [
+        {
+          "ID": "8834*4",
+          "composerName": "Weber,  Carl  Maria Von",
+          "workTitle": "OBERON",
+          "movement": "\"Ozean, du Ungeheuer\" (Ocean, thou mighty monster), Reiza (Scene and Aria), Act II",
+          "conductorName": "Timm, Henry C.",
+          "soloists": [
+            {
+              "soloistName": "Otto, Antoinette",
+              "soloistInstrument": "Soprano",
+              "soloistRoles": "S"
+            }
+          ]
+        },
+        {
+          "ID": "3642*",
+          "composerName": "Hummel,  Johann",
+          "workTitle": "QUINTET, PIANO, D MINOR, OP. 74",
+          "soloists": [
+            {
+              "soloistName": "Scharfenberg, William",
+              "soloistInstrument": "Piano",
+              "soloistRoles": "A"
+            },
+            {
+              "soloistName": "Hill, Ureli Corelli",
+              "soloistInstrument": "Violin",
+              "soloistRoles": "A"
+            },
+            {
+              "soloistName": "Derwort, G. H.",
+              "soloistInstrument": "Viola",
+              "soloistRoles": "A"
+            },
+            {
+              "soloistName": "Boucher, Alfred",
+              "soloistInstrument": "Cello",
+              "soloistRoles": "A"
+            },
+            {
+              "soloistName": "Rosier, F. W.",
+              "soloistInstrument": "Double Bass",
+              "soloistRoles": "A"
+            }
+          ]
+        },
+        {
+          "ID": "0*",
+          "interval": "Intermission",
+          "soloists": []
+        },
+        {
+          "ID": "8834*3",
+          "composerName": "Weber,  Carl  Maria Von",
+          "workTitle": "OBERON",
+          "movement": "Overture",
+          "conductorName": "Etienne, Denis G.",
+          "soloists": []
+        },
+        {
+          "ID": "8835*1",
+          "composerName": "Rossini,  Gioachino",
+          "workTitle": "ARMIDA",
+          "movement": "Duet",
+          "conductorName": "Timm, Henry C.",
+          "soloists": [
+            {
+              "soloistName": "Otto, Antoinette",
+              "soloistInstrument": "Soprano",
+              "soloistRoles": "S"
+            },
+            {
+              "soloistName": "Horn, Charles Edward",
+              "soloistInstrument": "Tenor",
+              "soloistRoles": "S"
+            }
+          ]
+        },
+        {
+          "ID": "8837*6",
+          "composerName": "Beethoven,  Ludwig  van",
+          "workTitle": "FIDELIO, OP. 72",
+          "movement": "\"In Des Lebens Fruhlingstagen...O spur ich nicht linde,\" Florestan (aria)",
+          "conductorName": "Timm, Henry C.",
+          "soloists": [
+            {
+              "soloistName": "Horn, Charles Edward",
+              "soloistInstrument": "Tenor",
+              "soloistRoles": "S"
+            }
+          ]
+        },
+        {
+          "ID": "8336*4",
+          "composerName": "Mozart,  Wolfgang  Amadeus",
+          "workTitle": "ABDUCTION FROM THE SERAGLIO,THE, K.384",
+          "movement": "\"Ach Ich liebte,\" Konstanze (aria)",
+          "conductorName": "Timm, Henry C.",
+          "soloists": [
+            {
+              "soloistName": "Otto, Antoinette",
+              "soloistInstrument": "Soprano",
+              "soloistRoles": "S"
+            }
+          ]
+        },
+        {
+          "ID": "5543*",
+          "composerName": "Kalliwoda,  Johann  W.",
+          "workTitle": "OVERTURE NO. 1, D MINOR, OP. 38",
+          "conductorName": "Timm, Henry C.",
+          "soloists": []
+        }
+      ]
+    }
+]
+}

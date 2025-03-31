@@ -1,0 +1,32 @@
+<!-- webapp/templates/webapp/concert.html -->
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Concert Details{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if concert %}
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">{{ concert.eventType }}</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Venue:</strong> {{ concert.Venue }}</p>
+                        <p><strong>Location:</strong> {{ concert.Location }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Date:</strong> {{ concert.Date }}</p>
+                        <p><strong>Time:</strong> {{ concert.Time }}</p>
+                        <p><strong>External:</strong> {{ external_links }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            Concert not found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,166 @@
+<!-- webapp/templates/webapp/program.html -->
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}Program Details{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if program %}
+        <h2>Program {{ program.programID }}</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ program.orchestra.label }}</h5>
+                <p class="card-text">Season: {{ program.season }}</p>
+                <p class="card-text">Orchestra: {{ program.orchestra }}</p>
+                <p class="card-text">UID: {{ program.id }}</p>
+            </div>
+        </div>
+
+        <h3>Concerts</h3>
+        <div class="row mb-4">
+            {% for concert in program.concerts %}
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ concert.eventType }}</h5>
+                            <p class="card-text">
+                                <strong>Venue:</strong> {{ concert.Venue }}<br>
+                                <strong>Date:</strong> {{ concert.Date }}<br>
+                                <strong>Time:</strong> {{ concert.Time }}<br>
+                                <strong>Location:</strong> {{ concert.Location }} <br>
+                                <strong>Links:</strong><br>
+                                {% for link in concert.external_links %}
+                                    <div class="card mt-2">
+                                        <div class="card-body p-2">
+                                            <div class="d-flex align-items-center">
+                                                <a href="#" 
+                                                   data-url="{{ link.event }}"
+                                                   class="external-link" 
+                                                   title="{{ link.label }}">
+                                                    <i class="bi bi-box-arrow-up-right me-2"></i>
+                                                    {{ link.label }}
+                                                </a>
+                                                <small class="text-muted ms-2">
+                                                    ({{ link.startDate }})
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h3>Program Works</h3>
+        <div class="row">
+            {% for work in program.works %}
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ work.workTitle }}</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="card-text">
+                                        <strong>Composer:</strong>
+                                        <a href="{% url 'composer' composer_uri=work.composer.uri|urlencode %}" 
+                                           class="text-decoration-none"
+                                           data-bs-toggle="tooltip" 
+                                           title="View composer details">
+                                            {{ work.composer.label }}
+                                            <i class="bi bi-info-circle-fill ms-1 small"></i>
+                                        </a><br>
+                                        {% if work.conductorName %}
+                                            <strong>Conductor:</strong>
+                                            <a href="{% url 'conductor' conductor_uri=work.conductor.uri|urlencode %}"
+                                               class="text-decoration-none"
+                                               data-bs-toggle="tooltip"
+                                               title="View conductor details">
+                                                {{ work.conductorName }}
+                                                <i class="bi bi-info-circle-fill ms-1 small"></i>
+                                            </a><br>
+                                        {% endif %}
+                                        {% if work.movement %}
+                                            <strong>Movement:</strong>
+                                            <a href="{% url 'movement' movement_uri=work.movement.uri %}"
+                                               class="text-decoration-none"
+                                               data-bs-toggle="tooltip"
+                                               title="View movement details">
+                                                {{ work.movement.title }}
+                                                <i class="bi bi-info-circle-fill ms-1 small"></i>
+                                            </a><br>
+                                        {% endif %}
+                                        {% if work.interval %}
+                                            <strong>Interval:</strong> {{ work.interval }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                {% if work.soloists %}
+                                <div class="col-md-6">
+                                    <h6>Soloists:</h6>
+                                    <ul class="list-unstyled">
+                                        {% for soloist in work.soloists %}
+                                            <li>
+                                                <a href="{% url 'soloist' soloist_name=soloist.soloistName %}"
+                                                   class="text-decoration-none"
+                                                   data-bs-toggle="tooltip"
+                                                   title="View soloist details">
+                                                    {{ soloist.soloistName }}
+                                                    <i class="bi bi-info-circle-fill ms-1 small"></i>
+                                                </a>
+                                                ({{ soloist.soloistInstrument }} - {{ soloist.soloistRoles }})
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            Program not found.
+        </div>
+    {% endif %}
+</div>
+
+<!-- Replace the existing modal -->
+<div class="modal fade" id="linkModal" tabindex="-1" aria-labelledby="linkModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="linkModalLabel">External Content</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-4">
+                <div class="mb-3">
+                    <i class="bi bi-shield-lock text-warning" style="font-size: 2rem;"></i>
+                </div>
+                <h5 class="mb-3">Opening External Content</h5>
+                <p class="text-muted">The content will open in a popup window</p>
+                <button class="btn btn-primary mt-3" id="openPopupBtn">
+                    <i class="bi bi-box-arrow-up-right me-2"></i>Open in Popup
+                </button>tton>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    });
+</script>
+{% endblock %}

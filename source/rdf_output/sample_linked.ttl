@@ -1,0 +1,143 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ex: <http://localhost:8000/schema#> .
+@prefix exdata: <http://localhost:8000/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://schema.org/> .
+@prefix ns2: <http://purl.org/ontology/mo/> .
+@prefix ns3: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+exdata:9297 a ex:Program ;
+    ex:hasConcert exdata:9297-concert-1 ;
+    ex:hasWork exdata:9297-work-1,
+        exdata:9297-work-2,
+        exdata:9297-work-3,
+        exdata:9297-work-4 ;
+    ex:orchestra "New York Philharmonic"^^xsd:string ;
+    ex:orchestra_uri exdata:new-york-philharmonic ;
+    ex:programID "9297"^^xsd:string ;
+    ex:season "2004-05"^^xsd:string .
+
+exdata:9297-concert-1 a ex:Concert ;
+    ex:Date "2004-09-21 04:00:00"^^xsd:string ;
+    ex:Location "Manhattan, NY"^^xsd:string ;
+    ex:Time "20:00:00"^^xsd:string ;
+    ex:Venue "Avery Fisher Hall"^^xsd:string ;
+    ex:eventType "Subscription Season"^^xsd:string .
+
+exdata:9297-work-1 a ex:Work ;
+    ex:composerName "Anthem,"^^xsd:string ;
+    ex:conductorName "Maazel, Lorin"^^xsd:string ;
+    ex:hasComposer exdata:9297-work-1-composer-1 ;
+    ex:hasConductor exdata:9297-work-1-conductor-1 ;
+    ex:workTitle "UNITED STATES"^^xsd:string .
+
+exdata:9297-work-1-composer-1 a ex:Composer ;
+    dc:creator <https://musicbrainz.org/artist/b4a99553-a46f-40e7-b371-ba144b5859f3> ;
+    ns2:performer <https://musicbrainz.org/artist/b4a99553-a46f-40e7-b371-ba144b5859f3> .
+
+exdata:9297-work-1-conductor-1 a ex:Conductor ;
+    dc:creator <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> ;
+    ns2:performer <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> .
+
+exdata:9297-work-2 a ex:Work ;
+    ex:composerName "Beethoven,  Ludwig  van"^^xsd:string ;
+    ex:conductorName "Maazel, Lorin"^^xsd:string ;
+    ex:hasComposer exdata:9297-work-2-composer-1 ;
+    ex:hasConductor exdata:9297-work-2-conductor-1 ;
+    ex:hasSoloist exdata:9297-work-2-soloist-1 ;
+    ex:workTitle "CONCERTO, VIOLIN, D MAJOR, OP.61"^^xsd:string .
+
+exdata:9297-work-2-composer-1 a ex:Composer ;
+    dc:creator <https://musicbrainz.org/artist/1f9df192-a621-4f54-8850-2c5373b7eac9> ;
+    ns2:performer <https://musicbrainz.org/artist/1f9df192-a621-4f54-8850-2c5373b7eac9> .
+
+exdata:9297-work-2-conductor-1 a ex:Conductor ;
+    dc:creator <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> ;
+    ns2:performer <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> .
+
+exdata:9297-work-2-soloist-1 a ex:Soloist ;
+    ex:soloistInstrument "Violin"^^xsd:string ;
+    ex:soloistName "Vengerov, Maxim"^^xsd:string ;
+    ex:soloistRoles "S"^^xsd:string ;
+    dc:creator <https://musicbrainz.org/artist/e7aa41e4-23c2-48ef-a89c-89296edabf41> ;
+    ns2:performer <https://musicbrainz.org/artist/e7aa41e4-23c2-48ef-a89c-89296edabf41> .
+
+exdata:9297-work-3 a ex:Work ;
+    ex:composerName "Dvorak,  Antonín"^^xsd:string ;
+    ex:conductorName "Maazel, Lorin"^^xsd:string ;
+    ex:hasComposer exdata:9297-work-3-composer-1 ;
+    ex:hasConductor exdata:9297-work-3-conductor-1 ;
+    ex:workTitle "SYMPHONY NO. 9, E MINOR, OP.95 (FROM THE NEW WORLD)"^^xsd:string .
+
+exdata:9297-work-3-composer-1 a ex:Composer ;
+    dc:creator <https://musicbrainz.org/artist/819eaeb2-8dd8-48a5-ad07-0bcd137985ef> ;
+    ns2:performer <https://musicbrainz.org/artist/819eaeb2-8dd8-48a5-ad07-0bcd137985ef> .
+
+exdata:9297-work-3-conductor-1 a ex:Conductor ;
+    dc:creator <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> ;
+    ns2:performer <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> .
+
+exdata:9297-work-4 a ex:Work ;
+    ex:composerName "Dvorak,  Antonín"^^xsd:string ;
+    ex:conductorName "Maazel, Lorin"^^xsd:string ;
+    ex:hasComposer exdata:9297-work-4-composer-1 ;
+    ex:hasConductor exdata:9297-work-4-conductor-1 ;
+    ex:hasMovement exdata:9297-work-4-movement-1 ;
+    ex:movementName "No. 1 in B major (Slavonic Dance No. 9): Molto vivace"^^xsd:string ;
+    ex:workTitle "SLAVONIC DANCES, OP. 72"^^xsd:string .
+
+exdata:9297-work-4-composer-1 a ex:Composer ;
+    dc:creator <https://musicbrainz.org/artist/819eaeb2-8dd8-48a5-ad07-0bcd137985ef> ;
+    ns2:performer <https://musicbrainz.org/artist/819eaeb2-8dd8-48a5-ad07-0bcd137985ef> .
+
+exdata:9297-work-4-conductor-1 a ex:Conductor ;
+    dc:creator <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> ;
+    ns2:performer <https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> .
+
+exdata:9297-work-4-movement-1 a ex:Movement ;
+    ns3:sub_event <https://musicbrainz.org/work/5e6c1083-6dbc-3246-b995-3ad8862a04d8> .
+
+exdata:new-york-philharmonic a ex:Orchestra ;
+    rdfs:label "New York Philharmonic"^^xsd:string ;
+    dc:creator <https://musicbrainz.org/artist/7cdb68bc-c4f1-4a92-9bd2-739641c5eff0> ;
+    ns2:performer <https://musicbrainz.org/artist/7cdb68bc-c4f1-4a92-9bd2-739641c5eff0> .
+
+<https://musicbrainz.org/work/5e6c1083-6dbc-3246-b995-3ad8862a04d8> a ns2:Movement ;
+    dc:creator <https://musicbrainz.org/artist/819eaeb2-8dd8-48a5-ad07-0bcd137985ef> ;
+    dc:language "zxx" ;
+    dc:title "Slavonic Dances, op. 72: No. 1 in B major: Molto vivace" ;
+    ns2:performer <https://musicbrainz.org/artist/819eaeb2-8dd8-48a5-ad07-0bcd137985ef> ;
+    rdfs:comment "for orchestra" .
+
+<https://musicbrainz.org/artist/1f9df192-a621-4f54-8850-2c5373b7eac9> a ns2:MusicArtist ;
+
+    ns1:nationality "DE" ;
+    rdfs:comment "German composer" ;
+    foaf:name "Ludwig van Beethoven" .
+
+<https://musicbrainz.org/artist/7cdb68bc-c4f1-4a92-9bd2-739641c5eff0> a ns2:MusicArtist ;
+    ns1:nationality "US" ;
+    foaf:name "New York Philharmonic" .
+
+<https://musicbrainz.org/artist/b4a99553-a46f-40e7-b371-ba144b5859f3> a ns2:MusicArtist ;
+    ns1:nationality "JP" ;
+    rdfs:comment "Japanese heavy metal band" ;
+    foaf:name "Anthem" .
+
+<https://musicbrainz.org/artist/e7aa41e4-23c2-48ef-a89c-89296edabf41> a ns2:MusicArtist ;
+    ns1:nationality "RU" ;
+    rdfs:comment "violinist" ;
+    foaf:name "Maxim Vengerov" .
+
+<https://musicbrainz.org/artist/819eaeb2-8dd8-48a5-ad07-0bcd137985ef> a ns2:MusicArtist ;
+    ns1:nationality "CZ" ;
+    rdfs:comment "composer" ;
+    foaf:name "Antonín Dvořák" .
+
+<https://musicbrainz.org/artist/e38bb7a2-c3e5-4be2-894b-7078c40b9955> a ns2:MusicArtist ;
+    ns1:nationality "US" ;
+    rdfs:comment "conductor" ;
+    foaf:name "Lorin Maazel" .
+

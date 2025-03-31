@@ -1,0 +1,64 @@
+SOURCE DATA： https://github.com/nyphilarchive/PerformanceHistory
+
+
+PREFIX ex: <http://example.org/schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?workTitle ?composerName ?conductorName ?movement (COUNT(?work) AS ?popularity)
+WHERE {
+  ?program a ex:Program ;
+           ex:season ?season ;
+           ex:hasWork ?work .
+  ?work ex:workTitle ?workTitle ;
+        ex:composerName ?composerName ;
+        ex:conductorName ?conductorName ;
+        ex:movement ?movement .
+
+  # Filter to include only seasons from the last 20 years
+  FILTER (SUBSTR(?season, 1, 4) >= "1800")
+}
+GROUP BY ?workTitle ?composerName ?conductorName ?movement
+ORDER BY DESC(?popularity)
+LIMIT 100
+
+
+
+TOP work
+
+
+
+https://data.carnegiehall.org/names/24999/about
+
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX mo: <http://purl.org/ontology/mo/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <http://schema.org/>
+
+SELECT DISTINCT ?work ?workTitle ?composerName ?event ?eventTitle 
+       (CONCAT(STR(YEAR(?date)), '-', STR(MONTH(?date)), '-', STR(DAY(?date))) as ?eventDate)
+WHERE {
+    ?event schema:startDate ?date ;
+           rdfs:label ?title ;
+           schema:subEvent ?workPerformance .
+    ?workPerformance a <http://www.wikidata.org/entity/Q204854> ;
+                     schema:workPerformed ?work .
+    ?work rdfs:label ?workTitle ;
+          dcterms:creator ?composer .
+    ?composer (schema:name|rdfs:label) ?composerName .
+    BIND (str(?title) as ?eventTitle)
+    FILTER(CONTAINS(?eventTitle, "New York Philharmonic"))
+}
+ORDER BY ?date
+LIMIT 1000
+// 
+
+
+JOIN BY TIME and workTitle
+
+
+SELECT DISTINCT ?subject ?predicate ?object
+WHERE {
+    ?subject ?predicate ?object .
+}
+limit 100

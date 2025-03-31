@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if soloist %}
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Soloist: {{ soloist.soloistName }}</h5>
+            </div>
+            <div class="card-body">
+                {% for key, value in additional_info.items %}
+                    {% if value %}
+                        <p class="card-text">
+                            <strong>{{ key }}:</strong> {{ value }}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            Soloist not found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if movement %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Movement: {{ movement.title }}</h5>
+            </div>
+            <div class="card-body">
+                {% for key, value in movement_info.items %}
+                    {% if value %}
+                        <p class="card-text">
+                            <strong>{{ key }}:</strong>
+                            {% if key == "MusicBrainz URI" %}
+                                <a href="{{ value }}" target="_blank">
+                                    {{ value }}
+                                    <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                </a>
+                            {% else %}
+                                {{ value }}
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if composer %}
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ composer.artist_type }}: {{ composer.artist.label }}</h5>
+                </div>
+                <div class="card-body">
+                    {% for key, value in composer.additional_info.items %}
+                        {% if value %}
+                            <p class="card-text">
+                                <strong>{{ key }}:</strong>
+                                {% if key == "MusicBrainz" %}
+                                    <a href="{{ value }}" target="_blank">
+                                        {{ value }}
+                                        <i class="bi bi-box-arrow-up-right ms-1"></i>
+                                    </a>
+                                {% else %}
+                                    {{ value }}
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-warning">
+            Movement not found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
